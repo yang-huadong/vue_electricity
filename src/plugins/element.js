@@ -23,7 +23,23 @@ import {
     Pagination,
     Switch,
     MessageBox,
-    Dialog
+    Dialog,
+    Tooltip,
+    Tag,
+    Tree,
+    Select,
+    Option,
+    Cascader,
+    Radio,
+    Alert,
+    Tabs,
+    TabPane,
+    Steps,
+    Step,
+    Checkbox,
+    CheckboxGroup,
+    Upload,
+    Image
 } from 'element-ui'
 
 Vue.use(Button)
@@ -47,6 +63,23 @@ Vue.use(TableColumn)
 Vue.use(Pagination)
 Vue.use(Switch)
 Vue.use(Dialog)
+Vue.use(Tooltip)
+Vue.use(Tag)
+Vue.use(Tree)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Cascader)
+Vue.use(Radio)
+Vue.use(Alert)
+Vue.use(Tabs)
+Vue.use(TabPane)
+Vue.use(Steps)
+Vue.use(Step)
+Vue.use(CheckboxGroup)
+Vue.use(Checkbox)
+Vue.use(Upload)
+Vue.use(Image)
+
 
 
 Vue.prototype.$message = Message;

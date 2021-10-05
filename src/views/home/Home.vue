@@ -119,16 +119,14 @@ export default {
 .el-header {
   background-color: #373d41;
   display: flex;
-  // 两边对齐
-  justify-content: space-between;
+  justify-content: space-between; // 左右两边对齐
   padding-left: 0;
+  align-items: center; // 按钮不要上下贴边，得纵向剧中对齐
   color: #fff;
-  // 垂直居中
-  align-items: center;
   font-size: 20px;
   > div {
     display: flex;
-    align-items: center;
+    align-items: center; // 纵向剧中对齐
     span {
       margin-left: 15px;
     }
@@ -137,18 +135,27 @@ export default {
 
 .el-aside {
   background-color: #333744;
+  .el-menu {
+    border-right: none;
+  }
 }
+
+.el-main {
+  background-color: #eaedf1;
+}
+
 .iconfont {
   margin-right: 10px;
 }
+
+// 菜单折叠
 .toggle-button {
   background-color: #4a5064;
-  text-align: center;
-  color: #fff;
-  line-height: 24px;
   font-size: 10px;
+  line-height: 24px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.2em; // 字体之间的距离
   cursor: pointer;
-  // 字体之间的距离
-  letter-spacing: 0.2em;
 }
 </style>
