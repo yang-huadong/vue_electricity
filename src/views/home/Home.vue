@@ -3,7 +3,7 @@
     <el-header>
       <div>
         <img src="~assets/img/heima.png" alt="" />
-        <span>电商后台管理系统</span>
+        <span>轻应用后台管理系统</span>
       </div>
       <el-row>
         <el-button type="info" @click="logout">退出</el-button>
@@ -13,34 +13,16 @@
       <el-aside :width="isCollapse ? '64px' : '200px'">
         <div class="toggle-button" @click="goggleCollapse">|||</div>
         <!-- 菜单容器 -->
-        <el-menu
-          :default-active="activePath"
-          background-color="#333744"
-          text-color="#fff"
-          active-text-color="#409eff"
-          :collapse="isCollapse"
-          unique-opened
-          :collapse-transition="false"
-          router
-        >
+        <el-menu :default-active="activePath" background-color="#333744" text-color="#fff" active-text-color="#409eff" :collapse="isCollapse" unique-opened :collapse-transition="false" router>
           <!-- 一级菜单 -->
-          <el-submenu
-            :index="item.id + ''"
-            v-for="item in menuList"
-            :key="item.id"
-          >
+          <el-submenu :index="item.id + ''" v-for="item in menuList" :key="item.id">
             <template slot="title">
               <i :class="iconsObj[item.id]"></i>
               <span>{{ item.authName }}</span>
             </template>
 
             <!-- 二级菜单 -->
-            <el-menu-item
-              :index="'/' + subItem.path"
-              v-for="subItem in item.children"
-              :key="subItem.id"
-              @click="saveNavState('/' + subItem.path)"
-            >
+            <el-menu-item :index="'/' + subItem.path" v-for="subItem in item.children" :key="subItem.id" @click="saveNavState('/' + subItem.path)">
               <template slot="title">
                 <i class="el-icon-menu"></i>
                 <span>{{ subItem.authName }}</span>
@@ -49,9 +31,9 @@
           </el-submenu>
         </el-menu>
       </el-aside>
-      
+
       <el-main>
-          <router-view />
+        <router-view />
       </el-main>
     </el-container>
   </el-container>
@@ -60,7 +42,7 @@
 <script>
 export default {
   name: "Home",
-  data() {
+  data () {
     return {
       // 左侧菜单数据
       menuList: [],
@@ -78,31 +60,33 @@ export default {
       activePath: "",
     };
   },
-  created() {
+  created () {
     this.getMenuList();
     this.activePath = sessionStorage.getItem('activePath');
     // console.log(this.activePath);
   },
   methods: {
-    async getMenuList() {
-      const res = await this.$http.get("menus");
+    async getMenuList () {
+      const res = await this.$http.get("getLoginInfo");
+      console.log(res);
+      // if (res.code !== 200) return this.$message.error(res.message);
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg);
-      //   console.log(res);
+      console.log(res);
       this.menuList = res.data;
     },
     // 退出
-    logout() {
+    logout () {
       // token清空
       // sessionStorage.removeItem('token')
       window.sessionStorage.clear();
       this.$router.replace("/login");
     },
     // 是否折叠菜单
-    goggleCollapse() {
+    goggleCollapse () {
       this.isCollapse = !this.isCollapse;
     },
     // 保存点击按键的状态
-    saveNavState(activePath) {
+    saveNavState (activePath) {
       sessionStorage.setItem("activePath", activePath);
       this.activePath = activePath;
       console.log(this.activePath);
@@ -119,14 +103,14 @@ export default {
 .el-header {
   background-color: #373d41;
   display: flex;
-  justify-content: space-between; // 左右两边对齐
+  justify-content: space-between;
   padding-left: 0;
-  align-items: center; // 按钮不要上下贴边，得纵向剧中对齐
+  align-items: center;
   color: #fff;
   font-size: 20px;
   > div {
     display: flex;
-    align-items: center; // 纵向剧中对齐
+    align-items: center;
     span {
       margin-left: 15px;
     }

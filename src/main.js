@@ -18,7 +18,7 @@ import 'nprogress/nprogress.css'
 
 Vue.config.productionTip = false
 
-axios.defaults.baseURL = "http://127.0.0.1:8888/api/private/v1/"
+axios.defaults.baseURL = "/api"
 Vue.prototype.$http = axios;
 
 import TreeTable from 'vue-table-with-tree-grid'
@@ -61,7 +61,6 @@ Vue.filter('dateFormat', function(originVal) {
 
 // 全局富文本
 Vue.use(VueQuillEditor);
-console.log(echarts);
 Vue.prototype.$echarts = echarts;
 new Vue({
     render: h => h(App),
