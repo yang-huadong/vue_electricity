@@ -21,6 +21,7 @@ Vue.config.productionTip = false
 axios.defaults.baseURL = "/api"
 Vue.prototype.$http = axios;
 
+
 import TreeTable from 'vue-table-with-tree-grid'
 Vue.component('tree-table', TreeTable)
 
