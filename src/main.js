@@ -18,6 +18,8 @@ import 'nprogress/nprogress.css'
 
 Vue.config.productionTip = false
 
+
+
 axios.defaults.baseURL = "/api"
 Vue.prototype.$http = axios;
 
