@@ -61,12 +61,12 @@ export default {
         if (!valid) return
         const res = await this.$http.post('login', this.loginForm)
         console.log(res);
-        // if (res.meta.status !== 200) return this.$message.error('登录失败')
+        if (res.code !== 200) return this.$message.error('登录失败')
 
-        // // 保存token
-        // sessionStorage.setItem('token', res.data.token);
-        // this.$message.success('登录成功');
-        // this.$router.replace('/home')
+        // 保存token
+        sessionStorage.setItem('token', res.obj.tokenHead + ' ' + res.obj.token);
+        this.$message.success('登录成功');
+        this.$router.replace('/home')
       })
     },
     // 表单重置
